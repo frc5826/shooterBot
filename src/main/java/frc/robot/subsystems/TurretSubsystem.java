@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
@@ -33,8 +34,9 @@ public class TurretSubsystem extends SubsystemBase {
         baseEncoder = new DutyCycleEncoder(baseEncoderID);
 
         hoodPID = new PIDController(1, 0, 0);
-        basePID = new PIDController(1, 0, 0);
+        //basePID = new PIDController(1, 0, 0);
 
+        //TODO or set to a constant that is the zero measurement
         baseZero = baseEncoder.getAbsolutePosition();
         hoodZero = hoodEncoder.getAbsolutePosition();
     }
@@ -42,19 +44,29 @@ public class TurretSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         //System.out.println(getYaw());
-
+        System.out.println(hood.getEncoder().getPosition());
     }
 
-    public double setYaw(double angle) { return basePID.calculate(angle / 360); }
+    public void setYaw(double angle) {
+        //TODO if this works test what it returns
+        base.set(TalonSRXControlMode.Position , (angle / 360) + baseZero);
+    }
 
-    public double getYaw() { return baseEncoder.getAbsolutePosition() - baseZero; }
+    //public double getYaw() { return baseEncoder.getAbsolutePosition() - baseZero; }
 
-    public double setPitch(double angle) { return hoodPID.calculate(angle / 360); }
+    //TODO tune this pid as well
+    public void setPitch(double angle) {
+        //hood.set(hoodPID.calculate(hoodEncoder.getAbsolutePosition(), (angle / 360) + hoodZero));
+        //TODO if this works test what it returns because if it works we dont need to mount separate encoders
+        hood.getPIDController().setReference((angle / 360) + hoodZero, CANSparkMax.ControlType.kPosition);
+    }
 
-    public double getPitch() { return hoodEncoder.getAbsolutePosition() - hoodZero; }
+    //public double getPitch() { return hoodEncoder.getAbsolutePosition() - hoodZero; }
 
-    public void setLauncherRPM(int rpm) { 
-
+    public void setLauncherRPM(int rpm) {
+        //TODO tune pid for this
+        launcher1.getPIDController().setReference(rpm * launcherRatio, CANSparkMax.ControlType.kVelocity);
+        launcher2.getPIDController().setReference(-rpm * launcherRatio, CANSparkMax.ControlType.kVelocity);
     }
 
 }

@@ -33,6 +33,9 @@ public static final int baseEncoderID = 0;
 
 public static final double launcherRatio = 1;
 
+public static final double maxVelocity = 15;
+public static final int goalEndAngle = -60;
+
     public static class OperatorConstants
     {
         public static final int DRIVER_CONTROLLER_PORT = 0;

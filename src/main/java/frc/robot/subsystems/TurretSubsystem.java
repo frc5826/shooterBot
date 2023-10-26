@@ -39,6 +39,8 @@ public class TurretSubsystem extends SubsystemBase {
         //TODO or set to a constant that is the zero measurement
         baseZero = baseEncoder.getAbsolutePosition();
         hoodZero = hoodEncoder.getAbsolutePosition();
+
+        launcher2.follow(launcher1);
     }
 
     @Override
@@ -66,7 +68,11 @@ public class TurretSubsystem extends SubsystemBase {
     public void setLauncherRPM(int rpm) {
         //TODO tune pid for this
         launcher1.getPIDController().setReference(rpm * launcherRatio, CANSparkMax.ControlType.kVelocity);
-        launcher2.getPIDController().setReference(-rpm * launcherRatio, CANSparkMax.ControlType.kVelocity);
+        //launcher2.getPIDController().setReference(-rpm * launcherRatio, CANSparkMax.ControlType.kVelocity);
+    }
+
+    public boolean isSpunUp(int rpm) {
+        return Math.abs(launcher1.getEncoder().getVelocity() - rpm) < 200;
     }
 
 }

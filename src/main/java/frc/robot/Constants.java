@@ -36,6 +36,22 @@ public static final double launcherRatio = 1;
 public static final double maxVelocity = 15;
 public static final int goalEndAngle = -60;
 
+public static final double driveBaseMaxVolts = 12;
+public static final double driveBaseMaxVelocity = 3;
+
+public static final double driveBaseWidth = 1;
+public static final double driveBaseLength = 1;
+
+public static int[] speedControllers = {1, 2, 3, 4, 5, 6, 7, 8};
+
+public static final double[] offsets = { 0, 0, 0, 0};
+
+public static final int frontLeftSpeedController = 1;
+public static final int frontRightSpeedController = 2;
+public static final int backLeftSpeedController = 3;
+public static final int backRightSpeedController = 4;
+
+
     public static class OperatorConstants
     {
         public static final int DRIVER_CONTROLLER_PORT = 0;

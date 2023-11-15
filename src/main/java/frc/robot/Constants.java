@@ -18,39 +18,46 @@ import edu.wpi.first.wpilibj.XboxController;
 public final class Constants
 {
 
-public static final XboxController xbox = new XboxController(1);
+    public static final XboxController xbox = new XboxController(1);
 
-public static final int shooterID = 0;
+    //<editor-fold desc="Drive">
 
-public static final int hoodID = 1;
-public static final int turretBaseID = 2;
+    public static final double driveBaseMaxVolts = 12; //TODO
+    public static final double driveBaseMaxVelocity = 3; //TODO
 
-public static final int turretLauncherID1 = 3;
-public static final int turretLauncherID2 = 4;
+    public static final double driveBaseWidth = .516; //TODO
+    public static final double driveBaseLength = .568; //TODO
 
-public static final int hoodEncoderID = 1;
-public static final int baseEncoderID = 0;
+    public static int[] speedControllers = {1, 2, 3, 4, 5, 6, 7, 8}; //TODO
 
-public static final double launcherRatio = 1;
+    public static final double[] offsets = { 0, 0, 0, 0}; //TODO
 
-public static final double maxVelocity = 15;
-public static final int goalEndAngle = -60;
+    public static final int frontLeftEncoder = 50; //TODO
+    public static final int frontRightEncoder = 51; //TODO
+    public static final int backLeftEncoder = 52; //TODO
+    public static final int backRightEncoder = 53; //TODO
 
-public static final double driveBaseMaxVolts = 12;
-public static final double driveBaseMaxVelocity = 3;
+    //</editor-fold>
 
-public static final double driveBaseWidth = 1;
-public static final double driveBaseLength = 1;
+    //<editor-fold desc="Turret">
 
-public static int[] speedControllers = {1, 2, 3, 4, 5, 6, 7, 8};
+    public static final int shooterID = 0; //TODO
 
-public static final double[] offsets = { 0, 0, 0, 0};
+    public static final int hoodID = 1; //TODO
+    public static final int turretBaseID = 2; //TODO
 
-public static final int frontLeftSpeedController = 1;
-public static final int frontRightSpeedController = 2;
-public static final int backLeftSpeedController = 3;
-public static final int backRightSpeedController = 4;
+    public static final int turretLauncherID1 = 3; //TODO
+    public static final int turretLauncherID2 = 4; //TODO
 
+    public static final int hoodEncoderID = 1;
+    public static final int baseEncoderID = 0;
+
+    public static final double launcherRatio = 1; //TODO
+
+    public static final double maxVelocity = 15; //TODO
+    public static final int goalEndAngle = -60; //TODO
+
+    //</editor-fold>
 
     public static class OperatorConstants
     {

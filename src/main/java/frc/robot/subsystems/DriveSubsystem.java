@@ -10,7 +10,6 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.*;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -50,7 +49,7 @@ public class DriveSubsystem extends SubsystemBase {
                 .withGearRatio(SdsModuleConfigurations.MK4_L2)
                 .withDriveMotor(MotorType.NEO, speedControllers[0])
                 .withSteerMotor(MotorType.NEO, speedControllers[1])
-                .withSteerEncoderPort(frontLeftSpeedController)
+                .withSteerEncoderPort(frontLeftEncoder)
                 .withSteerOffset(offsets[0])
                 .build();
 
@@ -61,7 +60,7 @@ public class DriveSubsystem extends SubsystemBase {
                 .withGearRatio(SdsModuleConfigurations.MK4_L2)
                 .withDriveMotor(MotorType.NEO, speedControllers[2])
                 .withSteerMotor(MotorType.NEO, speedControllers[3])
-                .withSteerEncoderPort(frontRightSpeedController)
+                .withSteerEncoderPort(frontRightEncoder)
                 .withSteerOffset(offsets[1])
                 .build();
 
@@ -72,7 +71,7 @@ public class DriveSubsystem extends SubsystemBase {
                 .withGearRatio(SdsModuleConfigurations.MK4_L2)
                 .withDriveMotor(MotorType.NEO, speedControllers[4])
                 .withSteerMotor(MotorType.NEO, speedControllers[5])
-                .withSteerEncoderPort(backLeftSpeedController)
+                .withSteerEncoderPort(backLeftEncoder)
                 .withSteerOffset(offsets[2])
                 .build();
 
@@ -83,7 +82,7 @@ public class DriveSubsystem extends SubsystemBase {
                 .withGearRatio(SdsModuleConfigurations.MK4_L2)
                 .withDriveMotor(MotorType.NEO, speedControllers[6])
                 .withSteerMotor(MotorType.NEO, speedControllers[7])
-                .withSteerEncoderPort(backRightSpeedController)
+                .withSteerEncoderPort(backRightEncoder)
                 .withSteerOffset(offsets[3])
                 .build();
 

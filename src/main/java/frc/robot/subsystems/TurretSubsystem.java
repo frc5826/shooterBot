@@ -24,29 +24,29 @@ public class TurretSubsystem extends SubsystemBase {
     private PIDController hoodPID;
 
     public TurretSubsystem() {
-        hood = new CANSparkMax(hoodID, CANSparkMaxLowLevel.MotorType.kBrushless);
-        base = new TalonSRX(turretBaseID);
+        //hood = new CANSparkMax(hoodID, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //base = new TalonSRX(turretBaseID);
 
-        launcher1 = new CANSparkMax(turretLauncherID1, CANSparkMaxLowLevel.MotorType.kBrushless);
-        launcher2 = new CANSparkMax(turretLauncherID2, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //launcher1 = new CANSparkMax(turretLauncherID1, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //launcher2 = new CANSparkMax(turretLauncherID2, CANSparkMaxLowLevel.MotorType.kBrushless);
 
-        hoodEncoder = new DutyCycleEncoder(hoodEncoderID);
-        baseEncoder = new DutyCycleEncoder(baseEncoderID);
+        //hoodEncoder = new DutyCycleEncoder(hoodEncoderID);
+        //baseEncoder = new DutyCycleEncoder(baseEncoderID);
 
         hoodPID = new PIDController(1, 0, 0);
         //basePID = new PIDController(1, 0, 0);
 
         //TODO or set to a constant that is the zero measurement
-        baseZero = baseEncoder.getAbsolutePosition();
-        hoodZero = hoodEncoder.getAbsolutePosition();
+        //baseZero = baseEncoder.getAbsolutePosition();
+        //hoodZero = hoodEncoder.getAbsolutePosition();
 
-        launcher2.follow(launcher1);
+        //launcher2.follow(launcher1);
     }
 
     @Override
     public void periodic() {
         //System.out.println(getYaw());
-        System.out.println(hood.getEncoder().getPosition());
+        //System.out.println(hood.getEncoder().getPosition());
     }
 
     public void setYaw(double angle) {

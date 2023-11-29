@@ -6,10 +6,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -34,6 +36,8 @@ public class RobotContainer
 
     private final VisionSubsystem visionSubsystem = new VisionSubsystem();
 
+    private final DriveCommand driveCommand = new DriveCommand(driveSubsystem);
+
     // Replace with CommandPS4Controller or CommandJoystick if needed
     private final CommandXboxController driverController =
             new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER_PORT);
@@ -43,6 +47,8 @@ public class RobotContainer
     {
         // Configure the trigger bindings
         configureBindings();
+
+        CommandScheduler.getInstance().setDefaultCommand(driveSubsystem, driveCommand);
     }
     
     

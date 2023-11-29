@@ -25,17 +25,17 @@ public final class Constants
     public static final double driveBaseMaxVolts = 12; //TODO
     public static final double driveBaseMaxVelocity = 3; //TODO
 
-    public static final double driveBaseWidth = .516; //TODO
-    public static final double driveBaseLength = .568; //TODO
+    public static final double driveBaseWidth = .516;
+    public static final double driveBaseLength = .568;
 
-    public static int[] speedControllers = {1, 2, 3, 4, 5, 6, 7, 8}; //TODO
+    public static int[] speedControllers = {4, 3, 2, 1, 8, 7, 6, 5};
 
-    public static final double[] offsets = { 0, 0, 0, 0}; //TODO
+    public static final double[] offsets = {166.3, 44.8, 321, 188}; //TODO
 
-    public static final int frontLeftEncoder = 50; //TODO
-    public static final int frontRightEncoder = 51; //TODO
-    public static final int backLeftEncoder = 52; //TODO
-    public static final int backRightEncoder = 53; //TODO
+    public static final int frontLeftEncoder = 50;
+    public static final int frontRightEncoder = 51;
+    public static final int backLeftEncoder = 52;
+    public static final int backRightEncoder = 53;
 
     //</editor-fold>
 
@@ -43,14 +43,14 @@ public final class Constants
 
     public static final int shooterID = 0; //TODO
 
-    public static final int hoodID = 1; //TODO
-    public static final int turretBaseID = 2; //TODO
+    public static final int hoodID = 9; //TODO
+    public static final int turretBaseID = 10; //TODO
 
-    public static final int turretLauncherID1 = 3; //TODO
-    public static final int turretLauncherID2 = 4; //TODO
+    public static final int turretLauncherID1 = 11; //TODO
+    public static final int turretLauncherID2 = 12; //TODO
 
-    public static final int hoodEncoderID = 1;
-    public static final int baseEncoderID = 0;
+    public static final int hoodEncoderID = 54;
+    public static final int baseEncoderID = 55;
 
     public static final double launcherRatio = 1; //TODO
 

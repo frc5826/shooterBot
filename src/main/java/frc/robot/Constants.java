@@ -20,6 +20,8 @@ public final class Constants
 
     public static final XboxController xbox = new XboxController(1);
 
+    public static final double controllerDeadzone = 0.1;
+
     //<editor-fold desc="Drive">
 
     public static final double driveBaseMaxVolts = 12; //TODO
@@ -28,9 +30,9 @@ public final class Constants
     public static final double driveBaseWidth = .516;
     public static final double driveBaseLength = .568;
 
-    public static int[] speedControllers = {4, 3, 2, 1, 8, 7, 6, 5};
+    public static int[] speedControllers = {8, 7, 6, 5, 2, 1, 4, 3};
 
-    public static final double[] offsets = {166.3, 44.8, 321, 188}; //TODO
+    public static final double[] offsets = {Math.toRadians(134.6), Math.toRadians(139.5), Math.toRadians(309.8), Math.toRadians(346)}; //TODO
 
     public static final int frontLeftEncoder = 50;
     public static final int frontRightEncoder = 51;

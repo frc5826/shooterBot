@@ -122,6 +122,11 @@ public class DriveSubsystem extends SubsystemBase {
 
         SwerveModuleState[] states = kinematics.toSwerveModuleStates(chassisSpeeds);
 
+//        frontLeftModule.set(0, 0);
+//        frontRightModule.set(0, 0);
+//        backLeftModule.set(0, 0);
+//        backRightModule.set(0, 0);
+
         frontLeftModule.set(states[0].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[0].angle.getRadians());
         frontRightModule.set(states[1].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[1].angle.getRadians());
         backLeftModule.set(states[2].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[2].angle.getRadians());

@@ -15,11 +15,28 @@ public class DriveCommand extends CommandBase {
 
     @Override
     public void execute() {
-        double y = xbox.getLeftY() * driveBaseMaxVelocity;
-        double x = xbox.getLeftX() * driveBaseMaxVelocity;
-        double rot = xbox.getRightX() * driveSubsystem.maxAngularVelocity;
 
-        driveSubsystem.drive(ChassisSpeeds.fromFieldRelativeSpeeds(x, y, rot, driveSubsystem.getRotation()));
+        double y;
+        double x;
+        double rot;
+
+        if (xbox.getLeftY() > controllerDeadzone) {
+            y = xbox.getLeftY() * driveBaseMaxVelocity;
+        } else { y = 0; }
+
+        if (xbox.getLeftX() > controllerDeadzone) {
+            x = xbox.getLeftX() * driveBaseMaxVelocity;
+        } else { x = 0; }
+
+        if (xbox.getRightX() > controllerDeadzone) {
+            rot = xbox.getRightX() * driveSubsystem.maxAngularVelocity;
+        } else { rot = 0; }
+
+        driveSubsystem.drive(ChassisSpeeds.fromFieldRelativeSpeeds(x, y, /*rot*/ 0.0, driveSubsystem.getRotation()));
+
+        if (xbox.getAButtonPressed()) {
+            driveSubsystem.zeroGyroscope();
+        }
 
     }
 

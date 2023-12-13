@@ -127,10 +127,10 @@ public class DriveSubsystem extends SubsystemBase {
 //        backLeftModule.set(0, 0);
 //        backRightModule.set(0, 0);
 
-        frontLeftModule.set(states[0].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[0].angle.getRadians());
-        frontRightModule.set(states[1].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[1].angle.getRadians());
-        backLeftModule.set(states[2].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[2].angle.getRadians());
-        backRightModule.set(states[3].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[3].angle.getRadians());
+        frontLeftModule.set(states[0].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[0].angle.getRadians() - Math.toRadians(30));
+        frontRightModule.set(states[1].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[1].angle.getRadians() - Math.toRadians(175));
+        backLeftModule.set(states[2].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[2].angle.getRadians() + Math.toRadians(91.3));
+        backRightModule.set(states[3].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[3].angle.getRadians() + Math.toRadians(169));
     }
 
 

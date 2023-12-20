@@ -1,10 +1,8 @@
 package frc.robot.subsystems;
 
 import com.kauailabs.navx.frc.AHRS;
-import com.swervedrivespecialties.swervelib.MkSwerveModuleBuilder;
-import com.swervedrivespecialties.swervelib.MotorType;
-import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
-import com.swervedrivespecialties.swervelib.SwerveModule;
+import com.revrobotics.CANSparkMax;
+import com.swervedrivespecialties.swervelib.*;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -14,6 +12,8 @@ import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
 import static frc.robot.Constants.*;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -35,12 +35,15 @@ public class DriveSubsystem extends SubsystemBase {
             new Translation2d(-driveBaseWidth / 2.0, -driveBaseLength / 2.0)
     );
 
-    private final SwerveDriveOdometry odometry;
+    private SwerveDriveOdometry odometry = null;
 
     private ChassisSpeeds chassisSpeeds = new ChassisSpeeds(0.0, 0.0, 0.0);
 
     public DriveSubsystem() {
         ShuffleboardTab shuffleboardTab = Shuffleboard.getTab("Drivetrain");
+
+        MkModuleConfiguration configuration = MkModuleConfiguration.getDefaultSteerNEO();
+        configuration.setDriveCurrentLimit(30);
 
         frontLeftModule = new MkSwerveModuleBuilder()
                 .withLayout(shuffleboardTab.getLayout("Front Left Module", BuiltInLayouts.kList)
@@ -86,6 +89,8 @@ public class DriveSubsystem extends SubsystemBase {
                 .withSteerOffset(offsets[3])
                 .build();
 
+        setRampRates(frontLeftModule, frontRightModule, backLeftModule, backRightModule);
+
         odometry = new SwerveDriveOdometry(
                 kinematics,
                 Rotation2d.fromDegrees(gyro.getFusedHeading()),
@@ -95,6 +100,12 @@ public class DriveSubsystem extends SubsystemBase {
         shuffleboardTab.addNumber("Gyroscope Angle", () -> getRotation().getDegrees());
         shuffleboardTab.addNumber("Pose X", () -> odometry.getPoseMeters().getX());
         shuffleboardTab.addNumber("Pose Y", () -> odometry.getPoseMeters().getY());
+    }
+
+    private void setRampRates(SwerveModule... swerveModules) {
+        for(var s : swerveModules) {
+            ((CANSparkMax) s.getDriveMotor()).setOpenLoopRampRate(Constants.rampRate);
+        }
     }
 
     public void zeroGyroscope() {
@@ -122,15 +133,10 @@ public class DriveSubsystem extends SubsystemBase {
 
         SwerveModuleState[] states = kinematics.toSwerveModuleStates(chassisSpeeds);
 
-//        frontLeftModule.set(0, 0);
-//        frontRightModule.set(0, 0);
-//        backLeftModule.set(0, 0);
-//        backRightModule.set(0, 0);
-
-        frontLeftModule.set(states[0].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[0].angle.getRadians() - Math.toRadians(30));
-        frontRightModule.set(states[1].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[1].angle.getRadians() - Math.toRadians(175));
-        backLeftModule.set(states[2].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[2].angle.getRadians() + Math.toRadians(91.3));
-        backRightModule.set(states[3].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[3].angle.getRadians() + Math.toRadians(169));
+        frontLeftModule.set(states[0].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[0].angle.getRadians()/* - Math.toRadians(30) */);
+        frontRightModule.set(states[1].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[1].angle.getRadians()/* - Math.toRadians(175) */);
+        backLeftModule.set(states[2].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[2].angle.getRadians()/* + Math.toRadians(91.3) */);
+        backRightModule.set(states[3].speedMetersPerSecond / driveBaseMaxVelocity * driveBaseMaxVolts, states[3].angle.getRadians()/* + Math.toRadians(169) */);
     }
 
 

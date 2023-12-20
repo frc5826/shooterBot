@@ -32,12 +32,18 @@ public final class Constants
 
     public static int[] speedControllers = {8, 7, 6, 5, 2, 1, 4, 3};
 
-    public static final double[] offsets = {-Math.toRadians(0), -Math.toRadians(0), -Math.toRadians(0), -Math.toRadians(0)};
+    public static final double[] offsets = {
+            -Math.toRadians(162.8 - 180),
+            -Math.toRadians(46),
+            -Math.toRadians(322.7 - 180),
+            -Math.toRadians(37.7)};
 
     public static final int frontLeftEncoder = 50;
     public static final int frontRightEncoder = 51;
     public static final int backLeftEncoder = 52;
     public static final int backRightEncoder = 53;
+
+    public static final double rampRate = 0.75;
 
     //</editor-fold>
 

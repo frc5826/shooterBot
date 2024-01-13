@@ -19,8 +19,8 @@ public class TargettingCommand extends CommandBase {
 
     @Override
     public void execute() {
-        if (xbox.getAButton()) {
-            turretSubsystem.setPitch(visionSubsystem.getHoodAngle());
-        }
+//        if (xbox.getAButton()) {
+//            turretSubsystem.setPitch(visionSubsystem.getHoodAngle());
+//        }
     }
 }

@@ -20,23 +20,23 @@ public class DriveCommand extends CommandBase {
         double x;
         double rot;
 
-        if (Math.abs(xbox.getLeftY()) > controllerDeadzone) {
-            y = xbox.getLeftY() * driveBaseMaxVelocity;
-        } else { y = 0; }
-
-        if (Math.abs(xbox.getLeftX()) > controllerDeadzone) {
-            x = xbox.getLeftX() * driveBaseMaxVelocity;
-        } else { x = 0; }
-
-        if (Math.abs(xbox.getRightX()) > controllerDeadzone) {
-            rot = xbox.getRightX() * driveSubsystem.maxAngularVelocity;
-        } else { rot = 0; }
-
-        driveSubsystem.drive(ChassisSpeeds.fromFieldRelativeSpeeds(-y, -x, -rot, driveSubsystem.getRotation()));
-
-        if (xbox.getAButtonPressed()) {
-            driveSubsystem.zeroGyroscope();
-        }
+//        if (Math.abs(xbox.getLeftY()) > controllerDeadzone) {
+//            y = xbox.getLeftY() * driveBaseMaxVelocity;
+//        } else { y = 0; }
+//
+//        if (Math.abs(xbox.getLeftX()) > controllerDeadzone) {
+//            x = xbox.getLeftX() * driveBaseMaxVelocity;
+//        } else { x = 0; }
+//
+//        if (Math.abs(xbox.getRightX()) > controllerDeadzone) {
+//            rot = xbox.getRightX() * driveSubsystem.maxAngularVelocity;
+//        } else { rot = 0; }
+//
+//        driveSubsystem.drive(ChassisSpeeds.fromFieldRelativeSpeeds(-y, -x, -rot, driveSubsystem.getRotation()));
+//
+//        if (xbox.getAButtonPressed()) {
+//            driveSubsystem.zeroGyroscope();
+//        }
 
     }
 

@@ -18,7 +18,10 @@ import edu.wpi.first.wpilibj.XboxController;
 public final class Constants
 {
 
-    public static final XboxController xbox = new XboxController(1);
+    public static final double driveDeadBand = 0.15;
+    public static final double turnDeadBand = 0.15;
+
+    //public static final XboxController xbox = new XboxController(1);
 
     public static final double controllerDeadzone = 0.1;
 
@@ -66,9 +69,4 @@ public final class Constants
     public static final int goalEndAngle = -60; //TODO
 
     //</editor-fold>
-
-    public static class OperatorConstants
-    {
-        public static final int DRIVER_CONTROLLER_PORT = 0;
-    }
 }
